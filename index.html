@@ -11,29 +11,38 @@
     Rock Paper Scissors
   </h1>
   <div id="container">
-      <span>Choose your hand</span>
-      <h2>First to score 5 points wins the game</h2>
+      <span id="roundResult">Choose your hand</span>
+      <h2 id="roundReason">First to score 5 points wins the game</h2>
     <div class="imgcontainer">
       <div id="choice_container">
-        <span id="pickimg">&#x3F;</span>
+        <span class="pickimg" id="playerChoice">❔</span>
         <div>
           <span>Player:</span>
-          <span> 0</span>
+          <span id="playerScore"> 0</span>
         </div>
       </div>
       <div id="choice_container">
-        <span id="pickimg">&#x3F;</span>
+        <span class="pickimg" id="computerChoice">❔</span>
         <div>
           <span>Computer:</span>
-          <span> 0</span>
+          <span id="computerScore"> 0</span>
         </div>
       </div>
     </div>
     <div class="buttonsContainer">
-      <button>&#9994;</button>
-      <button>&#9995;</button>
-      <button>&#9996;</button>
+      <button id="rock">✊</button>
+      <button id="paper">✋</button>
+      <button id="scissors">✌</button>
     </div>
+    <footer>
+      <h2>Copyright © Ahmed Zahran<a href="https://github.com/AhmedZahran15" target="_blank"><img src="./github-mark.svg" alt="">
+      </a></h2>
+    </footer>
   </div>
+  <div class="modal" id="endgameModal">
+    <p class="modal-title" id="endgameMsg"></p>
+    <button class="btn btn-restart" id="restartBtn">Play again</button>
+  </div>
+  <div class="overlay" id="overlay"></div>
 </body>
 </html>
