@@ -107,7 +107,7 @@ function openEndgameModal() {
 }
 
 function setFinalMessage() {
-  return playerScore > computerScore
+  return playerCount > computerCount
     ? (endgameMsg.textContent = 'You won!')
     : (endgameMsg.textContent = 'You lost...')
 }
