@@ -24,68 +24,69 @@ function getRandomChoice() {
       return 'SCISSORS'
   }
 }
+function scoreCheck(computerCount,playerCount){
+  if(computerCount===5 ||playerCount===5)
+  {
+    openEndgameModal()
+    setFinalMessage()
+    return true;
+  }
+}
+
+function showIcon(element,selection)
+{
+  switch (selection) {
+    case 'ROCK':
+      element.textContent = '✊'
+      break
+    case 'PAPER':
+      element.textContent = '✋'
+      break
+    case 'SCISSORS':
+      element.textContent = '✌'
+      break
+  }
+}
+
+function roundWinner(computerSelection,playerSelection)
+{
+  if (playerSelection === computerSelection) {
+    result.textContent = "It's a tie!";
+    reason.textContent=`${playerSelection} ties with ${computerSelection}`
+    }
+  else if (
+      (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
+      (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') ||
+      (playerSelection === 'PAPER' && computerSelection === 'ROCK')
+    ) {
+      result.textContent = "You won!";
+      reason.textContent=`${playerSelection} beats ${computerSelection}`
+      playerCount++;
+      playerScore.textContent=playerCount;
+    }
+  else if (
+      (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
+      (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') ||
+      (computerSelection === 'PAPER' && playerSelection === 'ROCK')
+    ) {
+      result.textContent = "You lost!";
+      reason.textContent=`${computerSelection} beats ${playerSelection}`
+      computerCount++;
+      computerScore.textContent=computerCount;
+    }
+}
 function GameRound(computerSelection,playerSelection)
 {
-  if(computerCount===5 ||playerCount===5)
-      {
-        openEndgameModal()
-        setFinalMessage()
-      }
-  else
-  {
     playerSelection=playerSelection.toUpperCase();
-    switch (playerSelection) {
-      case 'ROCK':
-        playerChoice.textContent = '✊'
-        break
-      case 'PAPER':
-        playerChoice.textContent = '✋'
-        break
-      case 'SCISSORS':
-        playerChoice.textContent = '✌'
-        break
+    if(scoreCheck(computerCount,playerCount))
+      return;
+    else
+    {
+      showIcon(playerChoice,playerSelection);
+      showIcon(computerChoice,computerSelection);
+      roundWinner(computerSelection,playerSelection);
+      scoreCheck(computerCount,playerCount);
     }
-    switch (computerSelection) {
-      case 'ROCK':
-        computerChoice.textContent = '✊'
-        break
-      case 'PAPER':
-        computerChoice.textContent = '✋'
-        break
-      case 'SCISSORS':
-        computerChoice.textContent = '✌'
-        break
-    }
-    if (playerSelection === computerSelection) {
-      result.textContent = "It's a tie!";
-      reason.textContent=`${playerSelection} ties with ${computerSelection}`
-      }
-    else if (
-        (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
-        (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') ||
-        (playerSelection === 'PAPER' && computerSelection === 'ROCK')
-      ) {
-        result.textContent = "You won!";
-        reason.textContent=`${playerSelection} beats ${computerSelection}`
-        playerCount++;
-        playerScore.textContent=playerCount;
-      }
-    else if (
-        (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
-        (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') ||
-        (computerSelection === 'PAPER' && playerSelection === 'ROCK')
-      ) {
-        result.textContent = "You lost!";
-        reason.textContent=`${computerSelection} beats ${playerSelection}`
-        computerCount++;
-        computerScore.textContent=computerCount;
-      }
-      if(computerCount===5 ||playerCount===5)
-      {
-        openEndgameModal()
-        setFinalMessage()
-      }
-  }
 }
 
 buttons.forEach(button =>{
