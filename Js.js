@@ -37,13 +37,16 @@ function showIcon(element,selection)
 {
   switch (selection) {
     case 'ROCK':
-      element.textContent = '✊'
+      element.textContent = '✊';
+      element.title= "Rock";
       break
     case 'PAPER':
-      element.textContent = '✋'
+      element.textContent = '✋';
+      element.title= "Paper";
       break
     case 'SCISSORS':
-      element.textContent = '✌'
+      element.textContent = '✌';
+      element.title= "Scissors";
       break
   }
 }
